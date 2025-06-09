@@ -6,6 +6,6 @@ class StaticPagesController < ApplicationController
   end
 
   def home
-    @gossips = Gossip.includes(:user)
+    @gossips = Gossip.includes(:user).all
   end
 end

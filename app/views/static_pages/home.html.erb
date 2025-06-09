@@ -1,9 +1,27 @@
-<h1 class="m-5 text-center">Bienvenue sur The Gossip Project</h1>
-<h2 class="m-5 text-center">La meilleure source pour être au courant des potins croustillants du moment.</h2>
-
-<% @gossips.each do |gossip| %>
-  <div>
-    <h4><%= gossip.title %></h4>
-    <p>Par <%= gossip.user.first_name %></p>
+<div class="row">
+  <div class="col-12">
+    <h1 class="text-center mb-5">Bienvenue sur The Gossip Project ! 🗣️</h1>
+    <p class="text-center lead mb-5">Découvre tous les potins croustillants de la ville</p>
   </div>
-<% end %>
+</div>
+
+<div class="row">
+  <% @gossips.each do |gossip| %>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><%= gossip.title %></h5>
+          <p class="card-text">
+            <strong>Par :</strong> <%= gossip.user.first_name %>
+          </p>
+          <p class="card-text">
+            <%= truncate(gossip.content, length: 100) %>
+          </p>
+        </div>
+        <div class="card-footer">
+          <%= link_to "Voir plus", gossip_path(gossip.id), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
