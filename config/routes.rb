@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get "gossips/index"
+  get "gossips/show"
+  get "static_pages/team"
+  get "static_pages/contact"
+  get "static_pages/welcome"
 
   root "static_pages#home"
   get '/team', to: 'static_pages#team'

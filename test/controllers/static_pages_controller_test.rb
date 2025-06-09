@@ -10,4 +10,9 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     get static_pages_contact_url
     assert_response :success
   end
+
+  test "should get welcome" do
+    get static_pages_welcome_url
+    assert_response :success
+  end
 end
