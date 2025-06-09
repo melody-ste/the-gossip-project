@@ -33,6 +33,9 @@ For questions about this project or to share your own gossips, visit our contact
 
 ## 📞 Contact
 
+````xxxxxxxxxx ---**Built with ❤️, Rails, Bootstrap, and exceptional teamwork!**💬 _"In the world of gossips, good stories spread fast - but great code lasts forever!"_ 🌟## 📞 Contact
+
+
 **Happy Gossiping! 🗣️✨**
 
 ## 🛠️ Prerequisites
@@ -52,7 +55,7 @@ For questions about this project or to share your own gossips, visit our contact
 
 ```bash
 bundle install
-```
+````
 
 4. Create and setup the database:
 
@@ -106,7 +109,6 @@ rails server
 
 ```
 
----
 
-**Built with ❤️, Rails, Bootstrap, and exceptional teamwork!**
+** Built with ❤️, Rails, Bootstrap, and exceptional teamwork! **
 ```
