@@ -5,9 +5,7 @@ class StaticPagesController < ApplicationController
   def contact
   end
 
-  def welcome
-  end
-
   def home
+    @gossips = Gossip.includes(:user)
   end
 end

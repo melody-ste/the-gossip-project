@@ -1,0 +1,8 @@
+
+
+<% @gossips.each do |gossip| %>
+  <div>
+    <h4><%= gossip.title %></h4>
+    <p>Par <%= gossip.user.first_name %></p>
+  </div>
+<% end %>
