@@ -3828,3 +3828,421 @@ Information for cause: NoMethodError (undefined method 'gossip_path' for an inst
   
 app/views/static_pages/home.html.erb:22
 app/views/static_pages/home.html.erb:9
+Started GET "/" for ::1 at 2025-06-09 18:37:13 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TheGossipProject'*/[0m
+Processing by StaticPagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mGossip Load (23.9ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (4, 2, 8, 1, 5, 10, 3, 9, 7) /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 238.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 336.7ms | GC: 0.0ms)
+Completed 200 OK in 3772ms (Views: 335.4ms | ActiveRecord: 43.3ms (2 queries, 0 cached) | GC: 64.0ms)
+
+
+Started GET "/gossips/1" for ::1 at 2025-06-09 18:37:38 +0200
+Processing by GossipsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mGossip Load (9.2ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" WHERE "gossips"."id" = 1 LIMIT 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  [1m[36mCity Load (1.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = 6 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering gossips/show.html.erb within layouts/application
+  Rendered gossips/show.html.erb within layouts/application (Duration: 16.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 20.0ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 695ms (ActiveRecord: 13.1ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method 'user_path' for an instance of #<Class:0x00007f28d4e11ff0>)
+Caused by: NoMethodError (undefined method 'user_path' for an instance of #<Class:0x00007f28d4e11ff0>)
+
+Information for: ActionView::Template::Error (undefined method 'user_path' for an instance of #<Class:0x00007f28d4e11ff0>):
+    15:         <div class="border-bottom pb-3 mb-3">
+    16:           <h5>Auteur</h5>
+    17:           <p>
+    18:             <%= link_to user_path(@gossip.user.id), class: "text-decoration-none" do %>
+    19:               <strong><%= @gossip.user.first_name %> <%= @gossip.user.last_name %></strong>
+    20:             <% end %>
+    21:           </p>
+  
+app/views/gossips/show.html.erb:18
+
+Information for cause: NoMethodError (undefined method 'user_path' for an instance of #<Class:0x00007f28d4e11ff0>):
+  
+app/views/gossips/show.html.erb:18
+Started GET "/gossips/2" for ::1 at 2025-06-09 18:38:28 +0200
+Processing by GossipsController#show as HTML
+  Parameters: {"id" => "2"}
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" WHERE "gossips"."id" = 2 LIMIT 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = 7 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering gossips/show.html.erb within layouts/application
+  Rendered gossips/show.html.erb within layouts/application (Duration: 12.8ms | GC: 9.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 15.6ms | GC: 9.0ms)
+Completed 500 Internal Server Error in 548ms (ActiveRecord: 1.2ms (3 queries, 0 cached) | GC: 9.0ms)
+
+
+  
+ActionView::Template::Error (undefined method 'user_path' for an instance of #<Class:0x00007f28d4e11ff0>)
+Caused by: NoMethodError (undefined method 'user_path' for an instance of #<Class:0x00007f28d4e11ff0>)
+
+Information for: ActionView::Template::Error (undefined method 'user_path' for an instance of #<Class:0x00007f28d4e11ff0>):
+    15:         <div class="border-bottom pb-3 mb-3">
+    16:           <h5>Auteur</h5>
+    17:           <p>
+    18:             <%= link_to user_path(@gossip.user.id), class: "text-decoration-none" do %>
+    19:               <strong><%= @gossip.user.first_name %> <%= @gossip.user.last_name %></strong>
+    20:             <% end %>
+    21:           </p>
+  
+app/views/gossips/show.html.erb:18
+
+Information for cause: NoMethodError (undefined method 'user_path' for an instance of #<Class:0x00007f28d4e11ff0>):
+  
+app/views/gossips/show.html.erb:18
+Started GET "/" for ::1 at 2025-06-09 18:40:02 +0200
+Processing by StaticPagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mGossip Load (1.5ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (4, 2, 8, 1, 5, 10, 3, 9, 7) /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 133.5ms | GC: 3.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 144.6ms | GC: 3.6ms)
+Completed 200 OK in 637ms (Views: 153.3ms | ActiveRecord: 7.9ms (2 queries, 0 cached) | GC: 3.6ms)
+
+
+Started GET "/gossips/1" for ::1 at 2025-06-09 18:40:30 +0200
+Processing by GossipsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" WHERE "gossips"."id" = 1 LIMIT 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = 6 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering gossips/show.html.erb within layouts/application
+  Rendered gossips/show.html.erb within layouts/application (Duration: 16.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 25.7ms | GC: 0.0ms)
+Completed 200 OK in 774ms (Views: 50.6ms | ActiveRecord: 11.7ms (3 queries, 0 cached) | GC: 3.9ms)
+
+
+Started GET "/users/4" for ::1 at 2025-06-09 18:40:36 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id" => "4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1 /*action='show',application='TheGossipProject',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:3:in 'UsersController#show'
+  [1m[36mCity Load (0.6ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = 6 /*action='show',application='TheGossipProject',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:3:in 'UsersController#show'
+  [1m[36mGossip Load (0.6ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" WHERE "gossips"."user_id" = 4 /*action='show',application='TheGossipProject',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:3:in 'UsersController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 8.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.6ms | GC: 0.0ms)
+Completed 200 OK in 639ms (Views: 24.6ms | ActiveRecord: 1.6ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-06-09 18:40:50 +0200
+Processing by StaticPagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (4, 2, 8, 1, 5, 10, 3, 9, 7) /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 25.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 29.8ms | GC: 0.0ms)
+Completed 200 OK in 472ms (Views: 34.9ms | ActiveRecord: 0.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/gossips/2" for ::1 at 2025-06-09 18:40:54 +0200
+Processing by GossipsController#show as HTML
+  Parameters: {"id" => "2"}
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" WHERE "gossips"."id" = 2 LIMIT 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  [1m[36mCity Load (0.6ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = 7 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering gossips/show.html.erb within layouts/application
+  Rendered gossips/show.html.erb within layouts/application (Duration: 5.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 20.9ms | GC: 0.0ms)
+Completed 200 OK in 514ms (Views: 25.2ms | ActiveRecord: 1.4ms (3 queries, 0 cached) | GC: 2.0ms)
+
+
+Started GET "/users/2" for ::1 at 2025-06-09 18:40:56 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id" => "2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1 /*action='show',application='TheGossipProject',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:3:in 'UsersController#show'
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = 7 /*action='show',application='TheGossipProject',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:3:in 'UsersController#show'
+  [1m[36mGossip Load (0.6ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" WHERE "gossips"."user_id" = 2 /*action='show',application='TheGossipProject',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:3:in 'UsersController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 15.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 20.6ms | GC: 0.0ms)
+Completed 200 OK in 503ms (Views: 22.6ms | ActiveRecord: 1.3ms (3 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/" for ::1 at 2025-06-09 18:41:04 +0200
+Processing by StaticPagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (4, 2, 8, 1, 5, 10, 3, 9, 7) /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 18.5ms | GC: 1.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 26.4ms | GC: 1.3ms)
+Completed 200 OK in 480ms (Views: 27.8ms | ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 1.3ms)
+
+
+Started GET "/" for ::1 at 2025-06-09 18:41:06 +0200
+Processing by StaticPagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mGossip Load (0.3ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (4, 2, 8, 1, 5, 10, 3, 9, 7) /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 11.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | GC: 0.0ms)
+Completed 200 OK in 462ms (Views: 17.0ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-06-09 18:41:23 +0200
+Processing by StaticPagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mGossip Load (0.5ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (4, 2, 8, 1, 5, 10, 3, 9, 7) /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 20.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 30.4ms | GC: 0.0ms)
+Completed 200 OK in 504ms (Views: 36.6ms | ActiveRecord: 1.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/gossips/2" for ::1 at 2025-06-09 18:41:29 +0200
+Processing by GossipsController#show as HTML
+  Parameters: {"id" => "2"}
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" WHERE "gossips"."id" = 2 LIMIT 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = 7 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering gossips/show.html.erb within layouts/application
+  Rendered gossips/show.html.erb within layouts/application (Duration: 5.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | GC: 0.0ms)
+Completed 200 OK in 521ms (Views: 13.9ms | ActiveRecord: 1.1ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/2" for ::1 at 2025-06-09 18:41:33 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id" => "2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1 /*action='show',application='TheGossipProject',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:3:in 'UsersController#show'
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = 7 /*action='show',application='TheGossipProject',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:3:in 'UsersController#show'
+  [1m[36mGossip Load (0.5ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" WHERE "gossips"."user_id" = 2 /*action='show',application='TheGossipProject',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:3:in 'UsersController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 1.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | GC: 0.0ms)
+Completed 200 OK in 486ms (Views: 6.1ms | ActiveRecord: 1.1ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-06-09 18:41:41 +0200
+Processing by StaticPagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (4, 2, 8, 1, 5, 10, 3, 9, 7) /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 8.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 19.0ms | GC: 0.0ms)
+Completed 200 OK in 528ms (Views: 24.6ms | ActiveRecord: 0.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/welcome/Sam" for ::1 at 2025-06-09 18:42:09 +0200
+Processing by WelcomeController#show as HTML
+  Parameters: {"first_name" => "Sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/show.html.erb within layouts/application
+  Rendered welcome/show.html.erb within layouts/application (Duration: 6.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.1ms | GC: 0.0ms)
+Completed 200 OK in 523ms (Views: 22.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-06-09 18:42:13 +0200
+Processing by StaticPagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (4, 2, 8, 1, 5, 10, 3, 9, 7) /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 10.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.3ms | GC: 0.0ms)
+Completed 200 OK in 435ms (Views: 13.6ms | ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-06-09 18:42:26 +0200
+Processing by StaticPagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mGossip Load (0.5ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (4, 2, 8, 1, 5, 10, 3, 9, 7) /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 7.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.9ms | GC: 0.0ms)
+Completed 200 OK in 464ms (Views: 10.1ms | ActiveRecord: 0.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/gossips/1" for ::1 at 2025-06-09 18:42:34 +0200
+Processing by GossipsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mGossip Load (0.5ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" WHERE "gossips"."id" = 1 LIMIT 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  [1m[36mCity Load (0.7ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = 6 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering gossips/show.html.erb within layouts/application
+  Rendered gossips/show.html.erb within layouts/application (Duration: 2.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | GC: 0.0ms)
+Completed 200 OK in 437ms (Views: 8.0ms | ActiveRecord: 1.4ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/welcome/Sam" for ::1 at 2025-06-09 18:42:44 +0200
+Processing by WelcomeController#show as HTML
+  Parameters: {"first_name" => "Sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/show.html.erb within layouts/application
+  Rendered welcome/show.html.erb within layouts/application (Duration: 1.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | GC: 0.0ms)
+Completed 200 OK in 494ms (Views: 6.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/welcome/martin" for ::1 at 2025-06-09 18:42:59 +0200
+Processing by WelcomeController#show as HTML
+  Parameters: {"first_name" => "martin"}
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/show.html.erb within layouts/application
+  Rendered welcome/show.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | GC: 0.0ms)
+Completed 200 OK in 478ms (Views: 7.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/welcome/theo" for ::1 at 2025-06-09 18:43:11 +0200
+Processing by WelcomeController#show as HTML
+  Parameters: {"first_name" => "theo"}
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/show.html.erb within layouts/application
+  Rendered welcome/show.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | GC: 0.0ms)
+Completed 200 OK in 473ms (Views: 3.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-06-09 18:46:45 +0200
+Processing by StaticPagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (4, 2, 8, 1, 5, 10, 3, 9, 7) /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:9
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 9.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | GC: 0.0ms)
+Completed 200 OK in 502ms (Views: 15.8ms | ActiveRecord: 0.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/gossips/1" for ::1 at 2025-06-09 18:46:47 +0200
+Processing by GossipsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" WHERE "gossips"."id" = 1 LIMIT 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = 6 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:7:in 'GossipsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering gossips/show.html.erb within layouts/application
+  Rendered gossips/show.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | GC: 0.0ms)
+Completed 200 OK in 474ms (Views: 4.5ms | ActiveRecord: 1.2ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/4" for ::1 at 2025-06-09 18:46:54 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id" => "4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1 /*action='show',application='TheGossipProject',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:3:in 'UsersController#show'
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = 6 /*action='show',application='TheGossipProject',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:3:in 'UsersController#show'
+  [1m[36mGossip Load (0.9ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" WHERE "gossips"."user_id" = 4 /*action='show',application='TheGossipProject',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:3:in 'UsersController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 1.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | GC: 0.0ms)
+Completed 200 OK in 497ms (Views: 5.8ms | ActiveRecord: 1.5ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/4" for ::1 at 2025-06-09 18:47:09 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id" => "4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1 /*action='show',application='TheGossipProject',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:3:in 'UsersController#show'
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = 6 /*action='show',application='TheGossipProject',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:3:in 'UsersController#show'
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" WHERE "gossips"."user_id" = 4 /*action='show',application='TheGossipProject',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:3:in 'UsersController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | GC: 0.0ms)
+Completed 200 OK in 461ms (Views: 6.8ms | ActiveRecord: 1.1ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/contact" for ::1 at 2025-06-09 18:47:30 +0200
+Processing by StaticPagesController#contact as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/contact.html.erb within layouts/application
+  Rendered static_pages/contact.html.erb within layouts/application (Duration: 8.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | GC: 0.0ms)
+Completed 200 OK in 470ms (Views: 14.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/welcome/Tom" for ::1 at 2025-06-09 18:47:55 +0200
+Processing by WelcomeController#show as HTML
+  Parameters: {"first_name" => "Tom"}
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/show.html.erb within layouts/application
+  Rendered welcome/show.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | GC: 0.0ms)
+Completed 200 OK in 474ms (Views: 4.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
