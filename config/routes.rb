@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "users/show"
   get "gossips/index"
   get "gossips/show"
   get "static_pages/team"
