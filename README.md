@@ -17,7 +17,7 @@ This project represents an outstanding example of **pair programming excellence*
 - **📚 Learning Together**: Supporting each other through Rails concepts
 - **🎨 Creative Synergy**: Combined efforts for beautiful UI/UX design
 
-### 🏆 Teamwork Highlights
+### 🏆 Teamwork Highlights @Melody-ste && @Paarroo 🤝
 
 - **Pair Programming Sessions**: Enhanced code quality through real-time collaboration
 - **Git Workflow Mastery**: Successfully managed branches, merges, and conflicts
