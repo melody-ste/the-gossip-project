@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   get '/welcome/:first_name', to: 'welcome#show'
   get '/gossips', to: 'gossips#index'
   get '/gossips/:id', to: 'gossips#show'
+  get '/gossips/:id', to: 'gossips#show', as: 'gossip'
   get '/users/:id', to: 'users#show'
 end
