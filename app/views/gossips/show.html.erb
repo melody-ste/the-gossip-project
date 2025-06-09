@@ -6,7 +6,7 @@
     </div>
 
 
-    <div class="card">
+    <div class="card custom-card-bg text-white">
       <div class="card-header">
         <h1><%= @gossip.title %></h1>
       </div>
@@ -15,7 +15,7 @@
         <div class="border-bottom pb-3 mb-3">
           <h5>Auteur</h5>
           <p>
-            <%= link_to user_path(@gossip.user.id), class: "text-decoration-none" do %>
+            <%= link_to user_path(@gossip.user.id), class: "text-decoration-none custom-links" do %>
               <strong><%= @gossip.user.first_name %> <%= @gossip.user.last_name %></strong>
             <% end %>
           </p>

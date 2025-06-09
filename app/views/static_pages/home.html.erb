@@ -1,14 +1,14 @@
 <div class="row">
   <div class="col-12">
-    <h1 class="text-center mb-5">Bienvenue sur The Gossip Project ! 🗣️</h1>
-    <p class="text-center lead mb-5">Découvre tous les potins croustillants de la ville</p>
+    <h1 class="text-center m-5 custom-title">Bienvenue sur The Gossip Project ! 🗣️</h1>
+    <h3 class="text-center m-5 custom-title">Découvre tous les potins croustillants de l'année</h3>
   </div>
 </div>
 
 <div class="row">
   <% @gossips.each do |gossip| %>
     <div class="col-md-4 mb-4">
-      <div class="card h-100">
+      <div class="card h-100 custom-card-bg text-white">
         <div class="card-body">
           <h5 class="card-title"><%= gossip.title %></h5>
           <p class="card-text">
@@ -19,7 +19,7 @@
           </p>
         </div>
         <div class="card-footer">
-          <%= link_to "Voir plus", "/gossips/#{gossip.id}", class: "btn btn-primary" %>
+          <%= link_to "Voir plus", "/gossips/#{gossip.id}", class: "btn btn-muted" %>
         </div>
       </div>
     </div>

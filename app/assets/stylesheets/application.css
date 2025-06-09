@@ -1,10 +1,26 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+
+.bg {
+  background-color: #898da3; 
+}
+
+.navbar-custom {
+  background-color: #1c2b4f;
+}
+
+.card.custom-card-bg {
+  background-color: #41496a;
+  background: rgba(26, 37, 66, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.custom-title {
+  color: #1c2b4f; 
+}
+
+.custom-links {
+  color: #1c2b4f; 
+}
