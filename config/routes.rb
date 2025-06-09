@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  root "static_pages#home"
   get '/team', to: 'static_pages#team'
   get '/contact', to: 'static_pages#contact'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
