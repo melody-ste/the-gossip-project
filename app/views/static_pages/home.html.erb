@@ -5,6 +5,8 @@
   </div>
 </div>
 
+<%= link_to "Créer un nouveau gossip", new_gossip_path, class: "btn btn-light mb-4" %>
+
 <div class="row">
   <% @gossips.each do |gossip| %>
     <div class="col-md-4 mb-4">
@@ -19,7 +21,7 @@
           </p>
         </div>
         <div class="card-footer">
-          <%= link_to "Voir plus", "/gossips/#{gossip.id}", class: "btn btn-muted" %>
+          <%= link_to "Voir plus", gossip_path(gossip), class: "btn btn-light" %>
         </div>
       </div>
     </div>

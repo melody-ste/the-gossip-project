@@ -53,6 +53,19 @@ Gossip.all.each do |gossip|
   gossip.tags << tag_sample
 end
 
+
+#commentaires
+puts "Creating 20 comments..."
+
+20.times do
+  Comment.create!(
+    content: Faker::Lorem.sentence(word_count: 10),
+    user: User.all.sample,
+    gossip: Gossip.all.sample
+  )
+end
+
+
 #PM
 puts "Création des messages privés..."
 3.times do

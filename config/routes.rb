@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
   root "static_pages#home"
-  get '/team', to: 'static_pages#team'
-  get '/contact', to: 'static_pages#contact'
+  
+  resources :static_pages, only: [] do
+    collection do
+      get :team
+      get :contact
+    end
+  end
 
-  get '/welcome/:first_name', to: 'welcome#show'
-  get '/gossips', to: 'gossips#index'
-  get '/gossips/:id', to: 'gossips#show', as: 'gossip'
-  get '/users/:id', to: 'users#show', as: 'user'
+  resources :welcome, only: [:show]
+  resources :users, only: [:show]
+  resources :gossips
 end
