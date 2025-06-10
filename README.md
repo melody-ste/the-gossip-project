@@ -4,20 +4,7 @@
 
 🚀 Welcome to The Gossip Project! Our first comprehensive Rails web application featuring a complete MVC architecture with stunning Bootstrap styling. This social network allows users to browse gossips, discover authors, and navigate through beautiful, responsive pages. Built as a foundation for advanced Rails features coming in the following days! 🤭
 
-## 🤝 Team Collaboration
-
-This project represents an outstanding example of **pair programming excellence**! 🎉
-
-### 🌟 Our Amazing Team Dynamic
-
-- **🚀 Seamless Collaboration**: Perfect synchronization between team members
-- **💡 Knowledge Sharing**: Continuous learning and teaching moments
-- **🔄 Efficient Workflow**: Smooth Git collaboration and conflict resolution
-- **🎯 Problem Solving**: Collective debugging and solution finding
-- **📚 Learning Together**: Supporting each other through Rails concepts
-- **🎨 Creative Synergy**: Combined efforts for beautiful UI/UX design
-
-### 🏆 Teamwork Highlights @Melody-ste && @Paarroo 🤝
+### 🏆 Team Collaboration @Melody-ste && @Paarroo 🤝
 
 - **Pair Programming Sessions**: Enhanced code quality through real-time collaboration
 - **Git Workflow Mastery**: Successfully managed branches, merges, and conflicts
@@ -30,12 +17,6 @@ _"Great gossips bring people together, but great teamwork makes exceptional proj
 For questions about this project or to share your own gossips, visit our contact page at `/contact`!
 
 💬 _"In the world of gossips, good stories spread fast - but great code lasts forever!"_ 🌟
-
-## 📞 Contact
-
-xxxxxxxxxx ---**Built with ❤️, Rails, Bootstrap, and exceptional teamwork!**💬 _"In the world of gossips, good stories spread fast - but great code lasts forever!"_ 🌟## 📞 Contact
-
-**Happy Gossiping! 🗣️✨**
 
 ## 🛠️ Prerequisites
 
@@ -74,18 +55,9 @@ rails db:seed
 ```bash
 rails server
 ```
+7. See the result :
 
-## 🗺️ Application Routes
-
-| Route                  | Controller#Action      | Description               |
-| ---------------------- | ---------------------- | ------------------------- |
-| `/`                    | `static_pages#home`    | Homepage with all gossips |
-| `/team`                | `static_pages#team`    | Team presentation page    |
-| `/contact`             | `static_pages#contact` | Contact information       |
-| `/welcome/:first_name` | `welcome#show`         | Dynamic welcome page      |
-| `/gossips`             | `gossips#index`        | List all gossips          |
-| `/gossips/:id`         | `gossips#show`         | Individual gossip page    |
-| `/users/:id`           | `users#show`           | User profile page         |
+use http://localhost:3000/
 
 ## 🔄 Database Relationships
 
