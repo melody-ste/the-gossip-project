@@ -21,6 +21,7 @@
           </p>
         </div>
         <div class="card-footer">
+          <p><small>Commentaires : <%= gossip.comments.count %></small></p>
           <%= link_to "Voir plus", gossip_path(gossip), class: "btn btn-light" %>
         </div>
       </div>

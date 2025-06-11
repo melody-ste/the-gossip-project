@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col-12">
-    <h1 class="text-center m-5 custom-title">Bienvenue sur The Gossip Project ! 🗣️</h1>
-    <h3 class="text-center m-5 custom-title">Découvre tous les potins croustillants de l'année</h3>
+    <h1 class="text-center m-5 custom-title">Voici l'ensemble des potins disponibles.</h1>
   </div>
 </div>
 
@@ -21,6 +20,7 @@
           </p>
         </div>
         <div class="card-footer">
+          <p><small>Commentaires : <%= gossip.comments.count %></small></p>
           <%= link_to "Voir plus", gossip_path(gossip), class: "btn btn-light" %>
         </div>
       </div>
