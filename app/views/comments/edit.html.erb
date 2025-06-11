@@ -11,3 +11,9 @@
     <%= form.submit "Sauvegarder", class: "btn btn-light mt-2" %>
   <% end %>
 </div>
+
+
+<%= form_with url: comment_path(@comment), method: :delete, local: true, data: { confirm: "Es-tu sûr(e) ?" } do %>
+  <%= hidden_field_tag :_method, :delete %>
+  <%= submit_tag "Supprimer ce potin", class: "btn btn-danger mt-4" %>
+<% end %>

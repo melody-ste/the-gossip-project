@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to gossips_path, notice: 'Commentaire supprimé avec succès !'
+    redirect_to gossip_path(@comment.gossip), notice: 'Commentaire supprimé avec succès !'
   end
 
   private
