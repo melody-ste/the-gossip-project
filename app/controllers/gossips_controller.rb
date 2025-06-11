@@ -10,6 +10,7 @@ class GossipsController < ApplicationController
 
   def new
     @gossip = Gossip.new
+    @tags = Tag.all
   end
 
   def create
@@ -18,21 +19,32 @@ class GossipsController < ApplicationController
     
 
     if @gossip.save 
+       if params[:tag_ids].present?
+        tag_ids = params[:tag_ids].reject(&:blank?)  
+        @gossip.tags << Tag.where(id: tag_ids)
+      end
       redirect_to @gossip, notice: 'Potin créé avec succès !'
     else
       flash.now[:alert] = "Erreur : merci de corriger les champs."
+      @tags = Tag.all
       render :new
     end
   end
 
   def edit
     @gossip = Gossip.find(params[:id])
-    # Méthode qui récupère le potin concerné et l'envoie à la view edit (edit.html.erb) pour affichage dans un formulaire d'édition
+    @tags =Tag.all
   end
 
   def update
    @gossip = Gossip.find(params[:id])
     if @gossip.update(gossip_params)
+      if params[:tag_ids].present?
+        tag_ids = params[:tag_ids].reject(&:blank?)
+        @gossip.tags = Tag.where(id: tag_ids)
+      else
+        @gossip.tags.clear 
+      end
       redirect_to @gossip, notice: 'Potin mis à jour avec succès !'
     else
       flash.now[:alert] = "Erreur : merci de corriger les champs."

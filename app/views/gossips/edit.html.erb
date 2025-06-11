@@ -13,6 +13,9 @@
       <%= form.text_area :content, class: "form-control" %>
       <br>
     </div>
+    <%= label_tag 'tag_ids', 'Tags liés au potin' %>
+    <%= select_tag 'tag_ids[]', options_from_collection_for_select(@tags, :id, :title, @gossip.tag_ids), multiple: true, class: "form-select" %>
+    <br>
 
     <%= form.submit "Mettre à jour", class: "btn btn-light mt-2" %>
   <% end %>

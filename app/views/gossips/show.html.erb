@@ -32,6 +32,14 @@
           <p><%= simple_format(@gossip.content) %></p>
         </div>
 
+        <div class="d-flex flex-wrap gap-2 mt-3 mb-2">
+          <% @gossip.tags.each do |tag| %>
+            <span>
+              <%= tag.title %>
+            </span>
+          <% end %>
+        </div>
+
 
         <div class="text-muted">
           <small>Publié le <%= @gossip.created_at.strftime("%d/%m/%Y à %H:%M") %></small>
