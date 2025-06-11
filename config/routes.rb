@@ -11,5 +11,9 @@ Rails.application.routes.draw do
   resources :welcome, only: [:show]
   resources :users, only: [:show]
   resources :cities, only: [:show]
-  resources :gossips
+  resources :gossips do
+    resources :comments, only:[:create] #le com appartient a un gossip spécifique
+  end
+  resources :comments, only: [:edit, :update]
+
 end

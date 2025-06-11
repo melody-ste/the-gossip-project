@@ -79,3 +79,12 @@ puts "Création des messages privés..."
     JoinTableRecipientPm.create(private_message: pm, recipient: recipient)
   end
 end
+
+User.create!(
+  first_name: "Anonyme",
+  last_name: "Inconnu",
+  description: "Utilisateur par défaut pour les commentaires anonymes",
+  email: "anonyme@example.com",
+  age: 99,
+  city: City.all.sample
+)

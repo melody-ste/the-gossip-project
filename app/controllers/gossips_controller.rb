@@ -5,6 +5,7 @@ class GossipsController < ApplicationController
 
   def show
     @gossip = Gossip.includes(user: :city).find(params[:id])
+    @comment = Comment.new
   end
 
   def new
