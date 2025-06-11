@@ -1,0 +1,13 @@
+<h1 class="text-center m-5 custom-title">Les potins de <%= @city.name %></h1>
+
+
+<div class="card custom-card-bg  text-white p-5 mt-4">
+  <ul>
+    <% @gossips.each do |gossip| %>
+      <li>
+        <%= link_to gossip.title, gossip_path(gossip), class: "custom-links" %>
+        par <%= link_to gossip.user.first_name, user_path(gossip.user), class: "custom-links" %>
+      </li>
+    <% end %>
+  </ul>
+</div>

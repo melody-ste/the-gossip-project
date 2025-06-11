@@ -5,7 +5,7 @@
       <p><strong>Description :</strong> <%= @user.description %></p>
       <p><strong>Email :</strong> <%= @user.email %></p>
       <p><strong>Âge :</strong> <%= @user.age %> ans</p>
-      <p><strong>Ville :</strong> <%= @user.city.name if @user.city %></p>
+      <p><strong>Ville :</strong> <%= link_to @user.city.name, city_path(@user.city), class: "custom-links" %></p>
 
       <h2>Potins publiés par <%= @user.first_name %> :</h2>
       <ul >

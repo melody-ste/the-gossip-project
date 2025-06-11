@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 
   resources :welcome, only: [:show]
   resources :users, only: [:show]
+  resources :cities, only: [:show]
   resources :gossips
 end

@@ -20,7 +20,7 @@
             <% end %>
           </p>
           <small class="text-muted">
-            📍 <%= @gossip.user.city.name %> (<%= @gossip.user.city.zip_code %>)
+            <%= link_to @gossip.user.city.name, city_path(@gossip.user.city) %> (<%= @gossip.user.city.zip_code %>)
           </small>
         </div>
 
