@@ -88,3 +88,12 @@ User.create!(
   age: 99,
   city: City.all.sample
 )
+
+gossips = Gossip.all
+comments = Comment.all
+
+20.times do
+  likeable = [gossips.sample, comments.sample].sample
+  Like.create(likeable: likeable)
+end
+puts "création des likes..."

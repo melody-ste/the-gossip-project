@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_10_165811) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_11_185457) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -56,6 +56,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_10_165811) do
     t.datetime "updated_at", null: false
     t.index ["private_message_id"], name: "index_join_table_recipient_pms_on_private_message_id"
     t.index ["recipient_id"], name: "index_join_table_recipient_pms_on_recipient_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.string "likeable_type", null: false
+    t.bigint "likeable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable"
   end
 
   create_table "private_messages", force: :cascade do |t|

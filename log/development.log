@@ -11244,3 +11244,637 @@ Processing by StaticPagesController#home as HTML
 Completed 200 OK in 606ms (Views: 70.1ms | ActiveRecord: 7.5ms (23 queries, 0 cached) | GC: 0.0ms)
 
 
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4833031731104927805) /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='TheGossipProject'*/[0m
+Migrating to CreateLikes (20250611185457)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[35m (18.8ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "likeable_type" character varying NOT NULL, "likeable_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='TheGossipProject'*/[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE INDEX "index_likes_on_likeable" ON "likes" ("likeable_type", "likeable_id") /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250611185457') RETURNING "version" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(4833031731104927805) /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mSET search_path TO public /*application='TheGossipProject'*/[0m
+  [1m[35m (68.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "the_gossip_project_development" /*application='TheGossipProject'*/[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[35mSET search_path TO public /*application='TheGossipProject'*/[0m
+  [1m[35m (80.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "the_gossip_project_test" /*application='TheGossipProject'*/[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mSET search_path TO public /*application='TheGossipProject'*/[0m
+  [1m[35m (73.2ms)[0m  [1m[35mCREATE DATABASE "the_gossip_project_development" ENCODING = 'unicode' /*application='TheGossipProject'*/[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mSET search_path TO public /*application='TheGossipProject'*/[0m
+  [1m[35m (68.0ms)[0m  [1m[35mCREATE DATABASE "the_gossip_project_test" ENCODING = 'unicode' /*application='TheGossipProject'*/[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql" SCHEMA pg_catalog /*application='TheGossipProject'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "cities" CASCADE /*application='TheGossipProject'*/[0m
+  [1m[35m (13.8ms)[0m  [1m[35mCREATE TABLE "cities" ("id" bigserial primary key, "name" character varying, "zip_code" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='TheGossipProject'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE /*application='TheGossipProject'*/[0m
+  [1m[35m (18.1ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "content" text, "user_id" bigint NOT NULL, "gossip_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='TheGossipProject'*/[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE INDEX "index_comments_on_gossip_id" ON "comments" ("gossip_id") /*application='TheGossipProject'*/[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE INDEX "index_comments_on_user_id" ON "comments" ("user_id") /*application='TheGossipProject'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "gossip_tags" CASCADE /*application='TheGossipProject'*/[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "gossip_tags" ("id" bigserial primary key, "gossip_id" bigint NOT NULL, "tag_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='TheGossipProject'*/[0m
+  [1m[35m (10.4ms)[0m  [1m[35mCREATE INDEX "index_gossip_tags_on_gossip_id" ON "gossip_tags" ("gossip_id") /*application='TheGossipProject'*/[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE INDEX "index_gossip_tags_on_tag_id" ON "gossip_tags" ("tag_id") /*application='TheGossipProject'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "gossips" CASCADE /*application='TheGossipProject'*/[0m
+  [1m[35m (11.8ms)[0m  [1m[35mCREATE TABLE "gossips" ("id" bigserial primary key, "title" character varying NOT NULL, "content" text NOT NULL, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='TheGossipProject'*/[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE INDEX "index_gossips_on_user_id" ON "gossips" ("user_id") /*application='TheGossipProject'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "join_table_recipient_pms" CASCADE /*application='TheGossipProject'*/[0m
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE TABLE "join_table_recipient_pms" ("id" bigserial primary key, "private_message_id" bigint NOT NULL, "recipient_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='TheGossipProject'*/[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE INDEX "index_join_table_recipient_pms_on_private_message_id" ON "join_table_recipient_pms" ("private_message_id") /*application='TheGossipProject'*/[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE INDEX "index_join_table_recipient_pms_on_recipient_id" ON "join_table_recipient_pms" ("recipient_id") /*application='TheGossipProject'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "likes" CASCADE /*application='TheGossipProject'*/[0m
+  [1m[35m (11.9ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "likeable_type" character varying NOT NULL, "likeable_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='TheGossipProject'*/[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE INDEX "index_likes_on_likeable" ON "likes" ("likeable_type", "likeable_id") /*application='TheGossipProject'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "private_messages" CASCADE /*application='TheGossipProject'*/[0m
+  [1m[35m (11.0ms)[0m  [1m[35mCREATE TABLE "private_messages" ("id" bigserial primary key, "content" text, "sender_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='TheGossipProject'*/[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE INDEX "index_private_messages_on_sender_id" ON "private_messages" ("sender_id") /*application='TheGossipProject'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "tags" CASCADE /*application='TheGossipProject'*/[0m
+  [1m[35m (15.1ms)[0m  [1m[35mCREATE TABLE "tags" ("id" bigserial primary key, "title" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='TheGossipProject'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE /*application='TheGossipProject'*/[0m
+  [1m[35m (13.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "description" text, "email" character varying, "age" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "city_id" bigint NOT NULL) /*application='TheGossipProject'*/[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE INDEX "index_users_on_city_id" ON "users" ("city_id") /*application='TheGossipProject'*/[0m
+  [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_0a34ec365a"
+FOREIGN KEY ("gossip_id")
+  REFERENCES "gossips" ("id")
+ /*application='TheGossipProject'*/[0m
+  [1m[35m (3.1ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+ /*application='TheGossipProject'*/[0m
+  [1m[35m (6.1ms)[0m  [1m[35mALTER TABLE "gossip_tags" ADD CONSTRAINT "fk_rails_506fcce6ed"
+FOREIGN KEY ("gossip_id")
+  REFERENCES "gossips" ("id")
+ /*application='TheGossipProject'*/[0m
+  [1m[35m (4.2ms)[0m  [1m[35mALTER TABLE "gossip_tags" ADD CONSTRAINT "fk_rails_e4c524df6c"
+FOREIGN KEY ("tag_id")
+  REFERENCES "tags" ("id")
+ /*application='TheGossipProject'*/[0m
+  [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE "gossips" ADD CONSTRAINT "fk_rails_9e6296a836"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+ /*application='TheGossipProject'*/[0m
+  [1m[35m (3.5ms)[0m  [1m[35mALTER TABLE "join_table_recipient_pms" ADD CONSTRAINT "fk_rails_44c5e21614"
+FOREIGN KEY ("private_message_id")
+  REFERENCES "private_messages" ("id")
+ /*application='TheGossipProject'*/[0m
+  [1m[35m (4.0ms)[0m  [1m[35mALTER TABLE "join_table_recipient_pms" ADD CONSTRAINT "fk_rails_d2c82e3175"
+FOREIGN KEY ("recipient_id")
+  REFERENCES "users" ("id")
+ /*application='TheGossipProject'*/[0m
+  [1m[35m (2.9ms)[0m  [1m[35mALTER TABLE "private_messages" ADD CONSTRAINT "fk_rails_747f84c937"
+FOREIGN KEY ("sender_id")
+  REFERENCES "users" ("id")
+ /*application='TheGossipProject'*/[0m
+  [1m[35m (2.7ms)[0m  [1m[35mALTER TABLE "users" ADD CONSTRAINT "fk_rails_9c7442481a"
+FOREIGN KEY ("city_id")
+  REFERENCES "cities" ("id")
+ /*application='TheGossipProject'*/[0m
+  [1m[35m (16.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY) /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TheGossipProject'*/[0m
+  [1m[35m (2.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20250611185457) /*application='TheGossipProject'*/[0m
+  [1m[35m (2.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20250610165811),
+(20250605154154),
+(20250605153727),
+(20250605153128),
+(20250605153104),
+(20250605152713),
+(20250605152431),
+(20250605152355),
+(20250605152332); /*application='TheGossipProject'*/[0m
+  [1m[35m (17.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (3.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-06-11 19:00:56.463909', '2025-06-11 19:00:56.463913') RETURNING "key" /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'schema_sha1' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (2.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '16dda43a9abd72da99de898a630acb9e4bae007b', '2025-06-11 19:00:56.481242', '2025-06-11 19:00:56.481244') RETURNING "key" /*application='TheGossipProject'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4833031731104927805) /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4833031731104927805) /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TheGossipProject'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TheGossipProject'*/[0m
+  [1m[36mJoinTableRecipientPm Load (1.0ms)[0m  [1m[34mSELECT "join_table_recipient_pms".* FROM "join_table_recipient_pms" /*application='TheGossipProject'*/[0m
+  [1m[36mPrivateMessage Load (0.5ms)[0m  [1m[34mSELECT "private_messages".* FROM "private_messages" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Load (0.4ms)[0m  [1m[34mSELECT "gossip_tags".* FROM "gossip_tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.3ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT "cities".* FROM "cities" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mCity Exists? (3.0ms)[0m  [1m[34mSELECT 1 AS one FROM "cities" WHERE "cities"."zip_code" = '24178' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mCity Create (0.5ms)[0m  [1m[32mINSERT INTO "cities" ("name", "zip_code", "created_at", "updated_at") VALUES ('Jamiechester', '24178', '2025-06-11 19:00:59.482418', '2025-06-11 19:00:59.482418') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (9.3ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mCity Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "cities" WHERE "cities"."zip_code" = '80332' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mCity Create (0.3ms)[0m  [1m[32mINSERT INTO "cities" ("name", "zip_code", "created_at", "updated_at") VALUES ('Lylemouth', '80332', '2025-06-11 19:00:59.523283', '2025-06-11 19:00:59.523283') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mCity Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "cities" WHERE "cities"."zip_code" = '99259-3906' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mCity Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "cities" WHERE "cities"."zip_code" = '16203-8031' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mCity Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "cities" WHERE "cities"."zip_code" = '32913' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mCity Create (0.3ms)[0m  [1m[32mINSERT INTO "cities" ("name", "zip_code", "created_at", "updated_at") VALUES ('East Wanita', '32913', '2025-06-11 19:00:59.561665', '2025-06-11 19:00:59.561665') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mCity Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "cities" WHERE "cities"."zip_code" = '65588' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mCity Create (2.0ms)[0m  [1m[32mINSERT INTO "cities" ("name", "zip_code", "created_at", "updated_at") VALUES ('South Allan', '65588', '2025-06-11 19:00:59.577066', '2025-06-11 19:00:59.577066') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mCity Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "cities" WHERE "cities"."zip_code" = '77592' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mCity Create (0.2ms)[0m  [1m[32mINSERT INTO "cities" ("name", "zip_code", "created_at", "updated_at") VALUES ('Homenickberg', '77592', '2025-06-11 19:00:59.597136', '2025-06-11 19:00:59.597136') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mCity Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "cities" WHERE "cities"."zip_code" = '45359' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mCity Create (0.2ms)[0m  [1m[32mINSERT INTO "cities" ("name", "zip_code", "created_at", "updated_at") VALUES ('East Ranaemouth', '45359', '2025-06-11 19:00:59.612429', '2025-06-11 19:00:59.612429') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mCity Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "cities" WHERE "cities"."zip_code" = '45089-7893' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mCity Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "cities" WHERE "cities"."zip_code" = '90322' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mCity Create (0.3ms)[0m  [1m[32mINSERT INTO "cities" ("name", "zip_code", "created_at", "updated_at") VALUES ('Samuelborough', '90322', '2025-06-11 19:00:59.639549', '2025-06-11 19:00:59.639549') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mCity Load (2.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mUser Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'carin@howe.test' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "description", "email", "age", "created_at", "updated_at", "city_id") VALUES ('Savannah', 'Lebsack', 'Cumque qui velit. Provident commodi in. Sit excepturi facilis.', 'carin@howe.test', 72, '2025-06-11 19:00:59.708905', '2025-06-11 19:00:59.708905', 3) RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'carey.glover@connelly-emmerich.test' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "description", "email", "age", "created_at", "updated_at", "city_id") VALUES ('Casey', 'Waters', 'Nemo quidem et. Aut eos magni. Quod distinctio placeat.', 'carey.glover@connelly-emmerich.test', 33, '2025-06-11 19:00:59.730846', '2025-06-11 19:00:59.730846', 7) RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'charlena@kuhlman.example' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "description", "email", "age", "created_at", "updated_at", "city_id") VALUES ('Kris', 'Wisozk', 'Fuga ab soluta. Beatae quod perferendis. Pariatur nobis et.', 'charlena@kuhlman.example', 44, '2025-06-11 19:00:59.751577', '2025-06-11 19:00:59.751577', 1) RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mUser Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'faustino.corwin@vandervort.test' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "description", "email", "age", "created_at", "updated_at", "city_id") VALUES ('Derick', 'Mante', 'Blanditiis possimus ab. Suscipit consequatur voluptatem. Magni est eligendi.', 'faustino.corwin@vandervort.test', 60, '2025-06-11 19:00:59.763700', '2025-06-11 19:00:59.763700', 1) RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'efrain_wuckert@powlowski-kling.test' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "description", "email", "age", "created_at", "updated_at", "city_id") VALUES ('Adelaida', 'Will', 'Minus deserunt facilis. Rerum et vel. Qui a commodi.', 'efrain_wuckert@powlowski-kling.test', 38, '2025-06-11 19:00:59.780921', '2025-06-11 19:00:59.780921', 3) RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'miguel.gusikowski@sawayn-jacobson.test' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "description", "email", "age", "created_at", "updated_at", "city_id") VALUES ('Deidra', 'Von', 'Tempore fuga et. Incidunt reprehenderit aut. Tempora sit corrupti.', 'miguel.gusikowski@sawayn-jacobson.test', 57, '2025-06-11 19:00:59.792986', '2025-06-11 19:00:59.792986', 4) RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mUser Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'enrique@bayer.example' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "description", "email", "age", "created_at", "updated_at", "city_id") VALUES ('Francisca', 'Mitchell', 'Dolores earum in. Deserunt aperiam doloremque. Error at omnis.', 'enrique@bayer.example', 34, '2025-06-11 19:00:59.808797', '2025-06-11 19:00:59.808797', 4) RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'melody.morar@mcclure.test' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "description", "email", "age", "created_at", "updated_at", "city_id") VALUES ('Kristy', 'Becker', 'Quas qui blanditiis. Eum accusantium sit. Est animi numquam.', 'melody.morar@mcclure.test', 32, '2025-06-11 19:00:59.825036', '2025-06-11 19:00:59.825036', 2) RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mUser Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'erik@wehner.test' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "description", "email", "age", "created_at", "updated_at", "city_id") VALUES ('Rod', 'Schamberger', 'Similique et quia. Placeat natus aut. Nulla facilis est.', 'erik@wehner.test', 32, '2025-06-11 19:00:59.849856', '2025-06-11 19:00:59.849856', 7) RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mUser Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'yvone.botsford@yundt.example' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "description", "email", "age", "created_at", "updated_at", "city_id") VALUES ('Elwood', 'Nitzsche', 'Sequi quia excepturi. Ea sit ut. Quae et similique.', 'yvone.botsford@yundt.example', 38, '2025-06-11 19:00:59.869180', '2025-06-11 19:00:59.869180', 7) RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (2.2ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('The Last Enemy', 'Reiciendis minus eaque. Explicabo adipisci facilis. Dolore consequatur quo.', 7, '2025-06-11 19:00:59.895219', '2025-06-11 19:00:59.895219') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (2.4ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('What''s Become of Waring', 'Velit voluptatem quia. Rem qui nihil. Ea architecto fugiat.', 2, '2025-06-11 19:00:59.912287', '2025-06-11 19:00:59.912287') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (1.9ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('Little Hands Clapping', 'Consequatur eum ut. Itaque consequatur magni. Doloremque assumenda rerum.', 10, '2025-06-11 19:00:59.924094', '2025-06-11 19:00:59.924094') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (4.4ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('Stranger in a Strange Land', 'Molestiae eveniet natus. Quaerat est sapiente. Dolorem quis earum.', 9, '2025-06-11 19:00:59.932546', '2025-06-11 19:00:59.932546') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (1.8ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('Far From the Madding Crowd', 'Tempore esse sunt. Voluptatum veniam consequatur. Autem quia sint.', 2, '2025-06-11 19:00:59.945191', '2025-06-11 19:00:59.945191') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (1.9ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('Of Human Bondage', 'Porro odit omnis. Velit optio quo. Quia et tempore.', 5, '2025-06-11 19:00:59.957059', '2025-06-11 19:00:59.957059') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (3.8ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('I Will Fear No Evil', 'Officia pariatur nesciunt. Et in debitis. Quaerat fugit sunt.', 7, '2025-06-11 19:00:59.983987', '2025-06-11 19:00:59.983987') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (2.7ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('Tender Is the Night', 'At ut illum. Omnis quia dolores. Saepe quos praesentium.', 5, '2025-06-11 19:00:59.998421', '2025-06-11 19:00:59.998421') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (1.9ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('Vanity Fair', 'Eos qui velit. Asperiores enim eos. Cumque ullam velit.', 9, '2025-06-11 19:01:00.009365', '2025-06-11 19:01:00.009365') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (7.3ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('Mr Standfast', 'Minus ad vel. Incidunt aperiam ab. Officia possimus fugiat.', 6, '2025-06-11 19:01:00.031764', '2025-06-11 19:01:00.031764') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (2.2ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('The Wings of the Dove', 'Ipsa atque dolores. Voluptatem non aperiam. Nisi in quasi.', 4, '2025-06-11 19:01:00.049067', '2025-06-11 19:01:00.049067') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (2.1ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('Recalled to Life', 'Praesentium corporis et. Fuga deserunt quo. Totam dolor et.', 4, '2025-06-11 19:01:00.064034', '2025-06-11 19:01:00.064034') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (1.8ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('No Country for Old Men', 'Ea officia vitae. Eaque atque error. Et maxime et.', 7, '2025-06-11 19:01:00.079567', '2025-06-11 19:01:00.079567') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (1.8ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('The Green Bay Tree', 'Nihil aut sed. Exercitationem et sit. Quod sint necessitatibus.', 6, '2025-06-11 19:01:00.095546', '2025-06-11 19:01:00.095546') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (2.3ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('A Darkling Plain', 'Sunt eveniet facilis. Ut non doloremque. Omnis neque rerum.', 6, '2025-06-11 19:01:00.104443', '2025-06-11 19:01:00.104443') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (1.8ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('Jacob Have I Loved', 'Qui laudantium doloribus. Voluptatum alias cum. Sit nesciunt minus.', 2, '2025-06-11 19:01:00.113211', '2025-06-11 19:01:00.113211') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (2.1ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('For Whom the Bell Tolls', 'Architecto nisi sit. Velit est perferendis. Architecto autem porro.', 7, '2025-06-11 19:01:00.124286', '2025-06-11 19:01:00.124286') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (2.2ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('To a God Unknown', 'Aperiam nemo maiores. Nam ullam id. Quae harum autem.', 1, '2025-06-11 19:01:00.134372', '2025-06-11 19:01:00.134372') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (1.8ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('Oh! To be in England', 'Voluptatem qui ut. Itaque beatae placeat. Quo occaecati sed.', 5, '2025-06-11 19:01:00.143869', '2025-06-11 19:01:00.143869') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Create (2.2ms)[0m  [1m[32mINSERT INTO "gossips" ("title", "content", "user_id", "created_at", "updated_at") VALUES ('The Proper Study', 'Perspiciatis in iste. Est aut corporis. Consectetur voluptatem voluptatibus.', 8, '2025-06-11 19:01:00.168690', '2025-06-11 19:01:00.168690') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mTag Create (2.2ms)[0m  [1m[32mINSERT INTO "tags" ("title", "created_at", "updated_at") VALUES ('#machining', '2025-06-11 19:01:00.192752', '2025-06-11 19:01:00.192752') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mTag Create (1.8ms)[0m  [1m[32mINSERT INTO "tags" ("title", "created_at", "updated_at") VALUES ('#polo', '2025-06-11 19:01:00.206892', '2025-06-11 19:01:00.206892') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mTag Create (7.5ms)[0m  [1m[32mINSERT INTO "tags" ("title", "created_at", "updated_at") VALUES ('#board-games', '2025-06-11 19:01:00.218098', '2025-06-11 19:01:00.218098') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mTag Create (3.4ms)[0m  [1m[32mINSERT INTO "tags" ("title", "created_at", "updated_at") VALUES ('#wood-carving', '2025-06-11 19:01:00.238424', '2025-06-11 19:01:00.238424') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mTag Create (6.5ms)[0m  [1m[32mINSERT INTO "tags" ("title", "created_at", "updated_at") VALUES ('#genealogy', '2025-06-11 19:01:00.248617', '2025-06-11 19:01:00.248617') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mTag Create (2.2ms)[0m  [1m[32mINSERT INTO "tags" ("title", "created_at", "updated_at") VALUES ('#glassblowing', '2025-06-11 19:01:00.261519', '2025-06-11 19:01:00.261519') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mTag Create (2.3ms)[0m  [1m[32mINSERT INTO "tags" ("title", "created_at", "updated_at") VALUES ('#astronomy', '2025-06-11 19:01:00.272763', '2025-06-11 19:01:00.272763') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mTag Create (1.9ms)[0m  [1m[32mINSERT INTO "tags" ("title", "created_at", "updated_at") VALUES ('#bodybuilding', '2025-06-11 19:01:00.280492', '2025-06-11 19:01:00.280492') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mTag Create (5.2ms)[0m  [1m[32mINSERT INTO "tags" ("title", "created_at", "updated_at") VALUES ('#wood-carving', '2025-06-11 19:01:00.292040', '2025-06-11 19:01:00.292040') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mTag Create (2.9ms)[0m  [1m[32mINSERT INTO "tags" ("title", "created_at", "updated_at") VALUES ('#vacation', '2025-06-11 19:01:00.307012', '2025-06-11 19:01:00.307012') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.7ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (1, 5, '2025-06-11 19:01:00.448623', '2025-06-11 19:01:00.448623') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.5ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (1, 4, '2025-06-11 19:01:00.461706', '2025-06-11 19:01:00.461706') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (1, 3, '2025-06-11 19:01:00.465241', '2025-06-11 19:01:00.465241') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.4ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (1, 7, '2025-06-11 19:01:00.470454', '2025-06-11 19:01:00.470454') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (1, 1, '2025-06-11 19:01:00.473626', '2025-06-11 19:01:00.473626') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (2.4ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (2, 1, '2025-06-11 19:01:00.493094', '2025-06-11 19:01:00.493094') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (2.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (3, 5, '2025-06-11 19:01:00.505217', '2025-06-11 19:01:00.505217') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (2.7ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (4, 3, '2025-06-11 19:01:00.515984', '2025-06-11 19:01:00.515984') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.4ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (4, 10, '2025-06-11 19:01:00.522188', '2025-06-11 19:01:00.522188') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (4, 7, '2025-06-11 19:01:00.528190', '2025-06-11 19:01:00.528190') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (4, 2, '2025-06-11 19:01:00.530868', '2025-06-11 19:01:00.530868') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (2.5ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (5, 1, '2025-06-11 19:01:00.544386', '2025-06-11 19:01:00.544386') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (2.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (6, 6, '2025-06-11 19:01:00.558825', '2025-06-11 19:01:00.558825') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (6, 1, '2025-06-11 19:01:00.563292', '2025-06-11 19:01:00.563292') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.4ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (6, 3, '2025-06-11 19:01:00.575630', '2025-06-11 19:01:00.575630') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (6, 5, '2025-06-11 19:01:00.580296', '2025-06-11 19:01:00.580296') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (2.4ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (7, 3, '2025-06-11 19:01:00.589771', '2025-06-11 19:01:00.589771') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (2.5ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (8, 10, '2025-06-11 19:01:00.601004', '2025-06-11 19:01:00.601004') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (2.2ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (9, 2, '2025-06-11 19:01:00.611561', '2025-06-11 19:01:00.611561') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (1.7ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (9, 10, '2025-06-11 19:01:00.616070', '2025-06-11 19:01:00.616070') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.4ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (9, 3, '2025-06-11 19:01:00.621062', '2025-06-11 19:01:00.621062') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (9, 9, '2025-06-11 19:01:00.623546', '2025-06-11 19:01:00.623546') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (2.5ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (10, 8, '2025-06-11 19:01:00.636684', '2025-06-11 19:01:00.636684') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.4ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (10, 1, '2025-06-11 19:01:00.641489', '2025-06-11 19:01:00.641489') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.4ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (10, 5, '2025-06-11 19:01:00.644330', '2025-06-11 19:01:00.644330') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (10, 2, '2025-06-11 19:01:00.647151', '2025-06-11 19:01:00.647151') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (2.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (11, 2, '2025-06-11 19:01:00.673408', '2025-06-11 19:01:00.673408') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (11, 9, '2025-06-11 19:01:00.678347', '2025-06-11 19:01:00.678347') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (11, 4, '2025-06-11 19:01:00.680440', '2025-06-11 19:01:00.680440') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (2.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (12, 7, '2025-06-11 19:01:00.700507', '2025-06-11 19:01:00.700507') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.4ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (12, 10, '2025-06-11 19:01:00.705723', '2025-06-11 19:01:00.705723') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (12, 1, '2025-06-11 19:01:00.708217', '2025-06-11 19:01:00.708217') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.5ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (12, 6, '2025-06-11 19:01:00.710324', '2025-06-11 19:01:00.710324') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (12, 3, '2025-06-11 19:01:00.713572', '2025-06-11 19:01:00.713572') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (2.2ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (13, 10, '2025-06-11 19:01:00.721646', '2025-06-11 19:01:00.721646') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.4ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (13, 3, '2025-06-11 19:01:00.726455', '2025-06-11 19:01:00.726455') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (2.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (14, 2, '2025-06-11 19:01:00.736984', '2025-06-11 19:01:00.736984') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (14, 7, '2025-06-11 19:01:00.741236', '2025-06-11 19:01:00.741236') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.5ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (14, 5, '2025-06-11 19:01:00.744377', '2025-06-11 19:01:00.744377') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (14, 1, '2025-06-11 19:01:00.746735', '2025-06-11 19:01:00.746735') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (2.2ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (15, 7, '2025-06-11 19:01:00.758335', '2025-06-11 19:01:00.758335') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.4ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (15, 5, '2025-06-11 19:01:00.763277', '2025-06-11 19:01:00.763277') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.4ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (15, 1, '2025-06-11 19:01:00.765498', '2025-06-11 19:01:00.765498') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (2.0ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (16, 2, '2025-06-11 19:01:00.776789', '2025-06-11 19:01:00.776789') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.4ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (16, 1, '2025-06-11 19:01:00.781535', '2025-06-11 19:01:00.781535') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.5ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (16, 10, '2025-06-11 19:01:00.785401', '2025-06-11 19:01:00.785401') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (2.0ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (17, 3, '2025-06-11 19:01:00.793678', '2025-06-11 19:01:00.793678') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.5ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (17, 2, '2025-06-11 19:01:00.798514', '2025-06-11 19:01:00.798514') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.6ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (17, 6, '2025-06-11 19:01:00.801346', '2025-06-11 19:01:00.801346') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (3.1ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (18, 5, '2025-06-11 19:01:00.809471', '2025-06-11 19:01:00.809471') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (18, 4, '2025-06-11 19:01:00.814448', '2025-06-11 19:01:00.814448') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.9ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (18, 3, '2025-06-11 19:01:00.817001', '2025-06-11 19:01:00.817001') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.4ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (18, 9, '2025-06-11 19:01:00.820817', '2025-06-11 19:01:00.820817') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (18, 10, '2025-06-11 19:01:00.822966', '2025-06-11 19:01:00.822966') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (2.6ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (19, 9, '2025-06-11 19:01:00.831050', '2025-06-11 19:01:00.831050') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.4ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (19, 5, '2025-06-11 19:01:00.835928', '2025-06-11 19:01:00.835928') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.4ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (19, 1, '2025-06-11 19:01:00.838254', '2025-06-11 19:01:00.838254') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.4ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (19, 10, '2025-06-11 19:01:00.840782', '2025-06-11 19:01:00.840782') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (0.5ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (19, 4, '2025-06-11 19:01:00.843012', '2025-06-11 19:01:00.843012') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTag Load (1.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mGossipTag Create (2.3ms)[0m  [1m[32mINSERT INTO "gossip_tags" ("gossip_id", "tag_id", "created_at", "updated_at") VALUES (20, 7, '2025-06-11 19:01:00.853353', '2025-06-11 19:01:00.853353') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.5ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (4.4ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Sint eum exercitationem nobis fugiat quidem voluptatem non voluptas aliquid.', 6, 6, '2025-06-11 19:01:00.962474', '2025-06-11 19:01:00.962474') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (2.4ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Cumque rerum aut in et ipsa eos et non iste.', 2, 3, '2025-06-11 19:01:00.984419', '2025-06-11 19:01:00.984419') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.3ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (3.6ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Ut libero consequatur et mollitia in harum soluta dicta illo.', 3, 13, '2025-06-11 19:01:01.010187', '2025-06-11 19:01:01.010187') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.3ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (2.0ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Rerum saepe tempore aspernatur deserunt dolor laborum adipisci consequuntur voluptatum.', 10, 12, '2025-06-11 19:01:01.024054', '2025-06-11 19:01:01.024054') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (2.2ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Sunt quae dignissimos sit eum et inventore nulla ullam distinctio.', 5, 11, '2025-06-11 19:01:01.037410', '2025-06-11 19:01:01.037410') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.2ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (5.8ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Quia rerum eum ex ut repellat harum non sapiente ad.', 10, 8, '2025-06-11 19:01:01.048822', '2025-06-11 19:01:01.048822') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.2ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (3.6ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Odit ea et at expedita distinctio accusamus ratione sit molestias.', 5, 14, '2025-06-11 19:01:01.064725', '2025-06-11 19:01:01.064725') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.2ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (1.8ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Ut iusto ut tempore cum non dolor molestias dignissimos fugit.', 8, 3, '2025-06-11 19:01:01.077155', '2025-06-11 19:01:01.077155') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.3ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (2.0ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Sed consequuntur quasi aut minima et vero id voluptates omnis.', 9, 7, '2025-06-11 19:01:01.090211', '2025-06-11 19:01:01.090211') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.3ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (2.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Expedita nostrum perferendis facilis porro est ducimus minima sed consequatur.', 8, 18, '2025-06-11 19:01:01.102358', '2025-06-11 19:01:01.102358') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.3ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (2.2ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Odit qui eligendi similique voluptatem dignissimos voluptas sunt aliquam est.', 7, 17, '2025-06-11 19:01:01.112846', '2025-06-11 19:01:01.112846') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.2ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (1.8ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Quia sit optio delectus veritatis ipsum molestiae sequi ipsa eaque.', 2, 4, '2025-06-11 19:01:01.124147', '2025-06-11 19:01:01.124147') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.7ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (2.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Alias eligendi et qui id qui pariatur cum qui assumenda.', 1, 7, '2025-06-11 19:01:01.136255', '2025-06-11 19:01:01.136255') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.3ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (3.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Itaque quia qui ad voluptatem laborum consequatur aliquam iure quidem.', 8, 4, '2025-06-11 19:01:01.148680', '2025-06-11 19:01:01.148680') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.2ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (2.5ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Harum nihil consequuntur cum labore natus maxime eligendi recusandae assumenda.', 10, 16, '2025-06-11 19:01:01.160543', '2025-06-11 19:01:01.160543') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.3ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (2.0ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Iste quas et possimus saepe omnis ullam recusandae ducimus dicta.', 1, 11, '2025-06-11 19:01:01.173926', '2025-06-11 19:01:01.173926') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (2.2ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Ipsum quis qui rem aspernatur ut cumque illo in aut.', 5, 4, '2025-06-11 19:01:01.187886', '2025-06-11 19:01:01.187886') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.2ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (2.6ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Sed corrupti rerum similique occaecati consequatur et et culpa quia.', 4, 13, '2025-06-11 19:01:01.199133', '2025-06-11 19:01:01.199133') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.2ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (1.7ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Voluptatem iure ut tempore minus quaerat vero aut illo consequatur.', 6, 18, '2025-06-11 19:01:01.210316', '2025-06-11 19:01:01.210316') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.3ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mComment Create (1.8ms)[0m  [1m[32mINSERT INTO "comments" ("content", "user_id", "gossip_id", "created_at", "updated_at") VALUES ('Reprehenderit mollitia ea enim libero quas dicta qui iste unde.', 5, 14, '2025-06-11 19:01:01.226560', '2025-06-11 19:01:01.226560') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" != 2 /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mPrivateMessage Create (2.5ms)[0m  [1m[32mINSERT INTO "private_messages" ("content", "sender_id", "created_at", "updated_at") VALUES ('Odio magnam repellendus. Et esse facilis.', 2, '2025-06-11 19:01:01.257713', '2025-06-11 19:01:01.257713') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mJoinTableRecipientPm Create (2.5ms)[0m  [1m[32mINSERT INTO "join_table_recipient_pms" ("private_message_id", "recipient_id", "created_at", "updated_at") VALUES (1, 10, '2025-06-11 19:01:01.291522', '2025-06-11 19:01:01.291522') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" != 1 /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mPrivateMessage Create (1.8ms)[0m  [1m[32mINSERT INTO "private_messages" ("content", "sender_id", "created_at", "updated_at") VALUES ('Odio voluptate ut. Fugiat voluptatem est.', 1, '2025-06-11 19:01:01.305674', '2025-06-11 19:01:01.305674') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mJoinTableRecipientPm Create (1.9ms)[0m  [1m[32mINSERT INTO "join_table_recipient_pms" ("private_message_id", "recipient_id", "created_at", "updated_at") VALUES (2, 5, '2025-06-11 19:01:01.312963', '2025-06-11 19:01:01.312963') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mJoinTableRecipientPm Create (2.0ms)[0m  [1m[32mINSERT INTO "join_table_recipient_pms" ("private_message_id", "recipient_id", "created_at", "updated_at") VALUES (2, 2, '2025-06-11 19:01:01.320501', '2025-06-11 19:01:01.320501') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" /*application='TheGossipProject'*/[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" != 1 /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mPrivateMessage Create (1.8ms)[0m  [1m[32mINSERT INTO "private_messages" ("content", "sender_id", "created_at", "updated_at") VALUES ('Cum expedita quam. Ullam corrupti numquam.', 1, '2025-06-11 19:01:01.330574', '2025-06-11 19:01:01.330574') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mJoinTableRecipientPm Create (2.1ms)[0m  [1m[32mINSERT INTO "join_table_recipient_pms" ("private_message_id", "recipient_id", "created_at", "updated_at") VALUES (3, 6, '2025-06-11 19:01:01.337812', '2025-06-11 19:01:01.337812') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mUser Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'anonyme@example.com' LIMIT 1 /*application='TheGossipProject'*/[0m
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "description", "email", "age", "created_at", "updated_at", "city_id") VALUES ('Anonyme', 'Inconnu', 'Utilisateur par défaut pour les commentaires anonymes', 'anonyme@example.com', 99, '2025-06-11 19:01:01.358711', '2025-06-11 19:01:01.358711', 1) RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*application='TheGossipProject'*/[0m
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (2.3ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Comment', 13, '2025-06-11 19:01:01.486412', '2025-06-11 19:01:01.486412') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (2.3ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Comment', 16, '2025-06-11 19:01:01.500415', '2025-06-11 19:01:01.500415') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (1.8ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Gossip', 7, '2025-06-11 19:01:01.509904', '2025-06-11 19:01:01.509904') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (2.2ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Gossip', 13, '2025-06-11 19:01:01.518997', '2025-06-11 19:01:01.518997') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (2.0ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Comment', 14, '2025-06-11 19:01:01.526903', '2025-06-11 19:01:01.526903') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (2.1ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Gossip', 15, '2025-06-11 19:01:01.533906', '2025-06-11 19:01:01.533906') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (1.7ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Gossip', 10, '2025-06-11 19:01:01.541195', '2025-06-11 19:01:01.541195') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (1.8ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Gossip', 4, '2025-06-11 19:01:01.547572', '2025-06-11 19:01:01.547572') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (1.8ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Comment', 19, '2025-06-11 19:01:01.557314', '2025-06-11 19:01:01.557314') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (1.8ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Comment', 11, '2025-06-11 19:01:01.563789', '2025-06-11 19:01:01.563789') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (1.8ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Gossip', 12, '2025-06-11 19:01:01.571788', '2025-06-11 19:01:01.571788') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (1.7ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Gossip', 3, '2025-06-11 19:01:01.578477', '2025-06-11 19:01:01.578477') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (2.2ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Comment', 9, '2025-06-11 19:01:01.586059', '2025-06-11 19:01:01.586059') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (1.8ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Gossip', 10, '2025-06-11 19:01:01.593486', '2025-06-11 19:01:01.593486') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (2.3ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Gossip', 4, '2025-06-11 19:01:01.601821', '2025-06-11 19:01:01.601821') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (1.7ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Comment', 19, '2025-06-11 19:01:01.609196', '2025-06-11 19:01:01.609196') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (2.2ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Comment', 8, '2025-06-11 19:01:01.617210', '2025-06-11 19:01:01.617210') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (1.8ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Comment', 18, '2025-06-11 19:01:01.625150', '2025-06-11 19:01:01.625150') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (2.1ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Comment', 15, '2025-06-11 19:01:01.631855', '2025-06-11 19:01:01.631855') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TheGossipProject'*/[0m
+  [1m[36mLike Create (2.0ms)[0m  [1m[32mINSERT INTO "likes" ("likeable_type", "likeable_id", "created_at", "updated_at") VALUES ('Comment', 19, '2025-06-11 19:01:01.639559', '2025-06-11 19:01:01.639559') RETURNING "id" /*application='TheGossipProject'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='TheGossipProject'*/[0m
