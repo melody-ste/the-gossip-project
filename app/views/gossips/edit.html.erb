@@ -1,0 +1,19 @@
+<h1 class="text-center m-5 custom-title">Modification du potin</h1>
+
+<div class="card custom-card-bg text-white p-5">
+  <%= form_with model: @gossip, local: true do |form| %>
+    <div class="form-group">
+      <%= form.label :title, "Titre" %>
+      <%= form.text_field :title, class: "form-control" %>
+      <br>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :content, "Contenu" %>
+      <%= form.text_area :content, class: "form-control" %>
+      <br>
+    </div>
+
+    <%= form.submit "Mettre à jour", class: "btn btn-light mt-2" %>
+  <% end %>
+</div>
