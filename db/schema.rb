@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_12_090939) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_12_142917) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -63,7 +63,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_12_090939) do
     t.bigint "likeable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "private_messages", force: :cascade do |t|
@@ -100,6 +102,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_12_090939) do
   add_foreign_key "gossips", "users"
   add_foreign_key "join_table_recipient_pms", "private_messages"
   add_foreign_key "join_table_recipient_pms", "users", column: "recipient_id"
+  add_foreign_key "likes", "users"
   add_foreign_key "private_messages", "users", column: "sender_id"
   add_foreign_key "users", "cities"
 end

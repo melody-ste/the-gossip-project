@@ -4,17 +4,17 @@
 <div class = "card custom-card-bg text-white m-5 p-5">
   <%= form_with url: session_path, data: { turbo: false }, local: true do %>
     <div>
-      <%= label_tag :email %>
-      <%= text_field_tag :email %>
+      <%= label_tag :email, "Adresse email", class: "form-label"%>
+      <%= text_field_tag :email, nil, class: "form-control", placeholder: "Entrez votre email" %>
+    </div>
+
+    <div class = "mt-2">
+      <%= label_tag :password, "Mot de passe", class: "form-label" %>
+      <%= password_field_tag :password, nil, class: "form-control", placeholder: "Entrez votre mot de passe" %>
     </div>
 
     <div>
-      <%= label_tag :password %>
-      <%= password_field_tag :password %>
-    </div>
-
-    <div>
-      <%= submit_tag "Se connecter" %>
+      <%= submit_tag "Se connecter", class: "mt-2 btn btn-light"%>
     </div>
   <% end %>
 </div>

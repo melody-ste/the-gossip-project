@@ -23,7 +23,7 @@ puts "Création de l'utilisateur avec mot de passe : #{password}"
 
 #Users
 puts "Création des utilisateurs..."
-10.times do
+users = 10.times.map do
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -100,6 +100,7 @@ comments = Comment.all
 
 20.times do
   likeable = [gossips.sample, comments.sample].sample
+  user = users.sample
   Like.create(likeable: likeable)
 end
 puts "création des likes..."

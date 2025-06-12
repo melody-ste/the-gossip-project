@@ -18,9 +18,23 @@
           <p class="card-text">
             <%= truncate(gossip.content, length: 100) %>
           </p>
+          <hr>
+          <div class="d-flex align-items-center gap-2">
+            <% if logged_in? %>
+              <% if gossip.likes.exists?(user: current_user) %>
+                <%= button_to "💔", gossip_like_path(gossip, gossip.likes.find_by(user: current_user)), method: :delete, class: "btn btn-sm btn-light" %>
+              <% else %>
+                <%= button_to "💙", gossip_likes_path(gossip), method: :post, class: "btn btn-sm btn-light" %>
+              <% end %>
+            <% end %>
+
+            <span><small>Likes : <%= gossip.likes.count %></small></span>
+            <span><small>Commentaires : <%= gossip.comments.count %></small></span>
+          </div>
         </div>
         <div class="card-footer">
           <p><small>Commentaires : <%= gossip.comments.count %></small></p>
+          <p><small>Likes : <%= gossip.likes.count %></small></p>
           <%= link_to "Voir plus", gossip_path(gossip), class: "btn btn-light" %>
         </div>
       </div>
