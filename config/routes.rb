@@ -15,5 +15,6 @@ Rails.application.routes.draw do
     resources :comments, only:[:create] #le com appartient a un gossip spécifique
   end
   resources :comments, only: [:edit, :update, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
 
 end

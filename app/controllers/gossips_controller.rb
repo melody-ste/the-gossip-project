@@ -1,4 +1,6 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, only: [:index]
+
   def index
     @gossips = Gossip.includes(:user).all
   end

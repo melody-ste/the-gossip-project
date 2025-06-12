@@ -17,6 +17,10 @@ puts "Création des villes..."
   )
 end
 
+password = Faker::Internet.password(min_length: 6)
+puts "Création de l'utilisateur avec mot de passe : #{password}"
+
+
 #Users
 puts "Création des utilisateurs..."
 10.times do
@@ -26,7 +30,8 @@ puts "Création des utilisateurs..."
     description: Faker::Lorem.paragraph,
     email: Faker::Internet.email,
     age: rand(18..75),
-    city: City.all.sample
+    city: City.all.sample,
+    password: password
   )
 end
 
@@ -86,7 +91,8 @@ User.create!(
   description: "Utilisateur par défaut pour les commentaires anonymes",
   email: "anonyme@example.com",
   age: 99,
-  city: City.all.sample
+  city: City.all.sample,
+  password: "mdpanonyme"
 )
 
 gossips = Gossip.all
