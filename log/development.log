@@ -15801,3 +15801,251 @@ Processing by GossipsController#show as HTML
 Completed 200 OK in 672ms (Views: 101.3ms | ActiveRecord: 12.3ms (8 queries, 1 cached) | GC: 2.1ms)
 
 
+Started GET "/gossips/1" for ::1 at 2025-06-12 16:12:32 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TheGossipProject'*/[0m
+Processing by GossipsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" WHERE "gossips"."id" = 1 LIMIT 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:9:in 'GossipsController#show'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 5 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:9:in 'GossipsController#show'
+  [1m[36mCity Load (2.0ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = 3 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:9:in 'GossipsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering gossips/show.html.erb within layouts/application
+  [1m[36mTag Load (1.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "gossip_tags" ON "tags"."id" = "gossip_tags"."tag_id" WHERE "gossip_tags"."gossip_id" = 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/views/gossips/show.html.erb:36
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."gossip_id" = 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/views/gossips/show.html.erb:63
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/views/gossips/show.html.erb:66
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/helpers/sessions_helper.rb:3:in 'SessionsHelper#current_user'
+  [1m[36mCACHE User Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1[0m
+  ↳ app/views/gossips/show.html.erb:66
+  Rendered gossips/show.html.erb within layouts/application (Duration: 271.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 341.5ms | GC: 0.0ms)
+Completed 200 OK in 2869ms (Views: 363.2ms | ActiveRecord: 37.4ms (8 queries, 1 cached) | GC: 44.7ms)
+
+
+Started GET "/gossips/1" for ::1 at 2025-06-12 16:16:49 +0200
+Processing by GossipsController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mGossip Load (0.3ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" WHERE "gossips"."id" = 1 LIMIT 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:9:in 'GossipsController#show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 5 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:9:in 'GossipsController#show'
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = 3 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:9:in 'GossipsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering gossips/show.html.erb within layouts/application
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "gossip_tags" ON "tags"."id" = "gossip_tags"."tag_id" WHERE "gossip_tags"."gossip_id" = 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/views/gossips/show.html.erb:36
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/helpers/sessions_helper.rb:3:in 'SessionsHelper#current_user'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."gossip_id" = 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/views/gossips/show.html.erb:68
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/views/gossips/show.html.erb:71
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1[0m
+  ↳ app/views/gossips/show.html.erb:71
+  Rendered gossips/show.html.erb within layouts/application (Duration: 143.5ms | GC: 31.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 156.0ms | GC: 31.0ms)
+Completed 200 OK in 864ms (Views: 170.1ms | ActiveRecord: 13.6ms (8 queries, 1 cached) | GC: 32.0ms)
+
+
+Started GET "/" for ::1 at 2025-06-12 16:16:57 +0200
+Processing by StaticPagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:11
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (5, 9, 4, 7, 6, 2, 8, 10, 1, 13) /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:11
+  [1m[36mComment Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 1 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 2 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 3 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 4 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 5 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 6 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 7 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 8 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 9 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 10 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 11 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 12 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 13 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 14 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 15 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 16 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 17 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 18 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 19 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 20 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 21 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 153.4ms | GC: 1.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/helpers/sessions_helper.rb:3:in 'SessionsHelper#current_user'
+  Rendered layout layouts/application.html.erb (Duration: 159.3ms | GC: 1.5ms)
+Completed 200 OK in 627ms (Views: 152.0ms | ActiveRecord: 9.9ms (24 queries, 0 cached) | GC: 1.5ms)
+
+
+Started GET "/gossips/21" for ::1 at 2025-06-12 16:17:02 +0200
+Processing by GossipsController#show as HTML
+  Parameters: {"id" => "21"}
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" WHERE "gossips"."id" = 21 LIMIT 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:9:in 'GossipsController#show'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 13 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:9:in 'GossipsController#show'
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:9:in 'GossipsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering gossips/show.html.erb within layouts/application
+  [1m[36mTag Load (0.9ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "gossip_tags" ON "tags"."id" = "gossip_tags"."tag_id" WHERE "gossip_tags"."gossip_id" = 21 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/views/gossips/show.html.erb:36
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/helpers/sessions_helper.rb:3:in 'SessionsHelper#current_user'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."gossip_id" = 21 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/views/gossips/show.html.erb:68
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1[0m
+  ↳ app/views/gossips/show.html.erb:71
+  Rendered gossips/show.html.erb within layouts/application (Duration: 52.0ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 54.5ms | GC: 0.1ms)
+Completed 200 OK in 517ms (Views: 53.9ms | ActiveRecord: 2.7ms (7 queries, 1 cached) | GC: 0.1ms)
+
+
+Started GET "/comments/21/edit" for ::1 at 2025-06-12 16:17:07 +0200
+Processing by CommentsController#edit as HTML
+  Parameters: {"id" => "21"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1 /*action='edit',application='TheGossipProject',controller='comments'*/[0m
+  ↳ app/helpers/sessions_helper.rb:3:in 'SessionsHelper#current_user'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = 21 LIMIT 1 /*action='edit',application='TheGossipProject',controller='comments'*/[0m
+  ↳ app/controllers/comments_controller.rb:17:in 'CommentsController#edit'
+  Rendering layout layouts/application.html.erb
+  Rendering comments/edit.html.erb within layouts/application
+  Rendered comments/edit.html.erb within layouts/application (Duration: 26.5ms | GC: 1.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 35.7ms | GC: 7.0ms)
+Completed 200 OK in 558ms (Views: 47.0ms | ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 15.2ms)
+
+
+Started PATCH "/comments/21" for ::1 at 2025-06-12 16:17:25 +0200
+Processing by CommentsController#update as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "comment" => {"content" => "test de commentaire par le current_user +test bouton"}, "commit" => "Sauvegarder", "id" => "21"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1 /*action='update',application='TheGossipProject',controller='comments'*/[0m
+  ↳ app/helpers/sessions_helper.rb:3:in 'SessionsHelper#current_user'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = 21 LIMIT 1 /*action='update',application='TheGossipProject',controller='comments'*/[0m
+  ↳ app/controllers/comments_controller.rb:21:in 'CommentsController#update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*action='update',application='TheGossipProject',controller='comments'*/[0m
+  ↳ app/controllers/comments_controller.rb:23:in 'CommentsController#update'
+  [1m[36mComment Update (5.7ms)[0m  [1m[33mUPDATE "comments" SET "content" = 'test de commentaire par le current_user +test bouton', "updated_at" = '2025-06-12 14:17:25.999228' WHERE "comments"."id" = 21 /*action='update',application='TheGossipProject',controller='comments'*/[0m
+  ↳ app/controllers/comments_controller.rb:23:in 'CommentsController#update'
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT /*action='update',application='TheGossipProject',controller='comments'*/[0m
+  ↳ app/controllers/comments_controller.rb:23:in 'CommentsController#update'
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" WHERE "gossips"."id" = 21 LIMIT 1 /*action='update',application='TheGossipProject',controller='comments'*/[0m
+  ↳ app/controllers/comments_controller.rb:24:in 'CommentsController#update'
+Redirected to http://localhost:3000/gossips/21
+Completed 302 Found in 551ms (ActiveRecord: 9.6ms (4 queries, 0 cached) | GC: 18.1ms)
+
+
+Started GET "/gossips/21" for ::1 at 2025-06-12 16:17:26 +0200
+Processing by GossipsController#show as TURBO_STREAM
+  Parameters: {"id" => "21"}
+  [1m[36mGossip Load (0.4ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" WHERE "gossips"."id" = 21 LIMIT 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:9:in 'GossipsController#show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 13 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:9:in 'GossipsController#show'
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/controllers/gossips_controller.rb:9:in 'GossipsController#show'
+  Rendering layout layouts/application.html.erb
+  Rendering gossips/show.html.erb within layouts/application
+  [1m[36mTag Load (0.8ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "gossip_tags" ON "tags"."id" = "gossip_tags"."tag_id" WHERE "gossip_tags"."gossip_id" = 21 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/views/gossips/show.html.erb:36
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/helpers/sessions_helper.rb:3:in 'SessionsHelper#current_user'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."gossip_id" = 21 /*action='show',application='TheGossipProject',controller='gossips'*/[0m
+  ↳ app/views/gossips/show.html.erb:68
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1[0m
+  ↳ app/views/gossips/show.html.erb:71
+  Rendered gossips/show.html.erb within layouts/application (Duration: 22.6ms | GC: 0.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 26.2ms | GC: 0.7ms)
+Completed 200 OK in 482ms (Views: 26.2ms | ActiveRecord: 2.5ms (7 queries, 1 cached) | GC: 4.9ms)
+
+
+Started GET "/" for ::1 at 2025-06-12 16:17:38 +0200
+Processing by StaticPagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[36mGossip Load (0.3ms)[0m  [1m[34mSELECT "gossips".* FROM "gossips" /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:11
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (5, 9, 4, 7, 6, 2, 8, 10, 1, 13) /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:11
+  [1m[36mComment Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 1 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 2 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 3 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 4 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 5 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 6 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 7 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 8 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 9 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 10 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 11 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 12 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 13 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 14 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 15 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 16 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 17 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 18 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 19 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 20 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  [1m[36mComment Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."gossip_id" = 21 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/views/static_pages/home.html.erb:24
+  Rendered static_pages/home.html.erb within layouts/application (Duration: 82.5ms | GC: 1.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 13 LIMIT 1 /*action='home',application='TheGossipProject',controller='static_pages'*/[0m
+  ↳ app/helpers/sessions_helper.rb:3:in 'SessionsHelper#current_user'
+  Rendered layout layouts/application.html.erb (Duration: 90.0ms | GC: 1.6ms)
+Completed 200 OK in 500ms (Views: 83.5ms | ActiveRecord: 8.4ms (24 queries, 0 cached) | GC: 1.6ms)
+
+

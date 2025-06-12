@@ -1,5 +1,5 @@
 class GossipsController < ApplicationController
-  before_action :authenticate_user, only: [:index]
+  before_action :authenticate_user, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @gossips = Gossip.includes(:user).all
@@ -64,6 +64,13 @@ class GossipsController < ApplicationController
 
   def gossip_params
     params.require(:gossip).permit(:title, :content, :user_id)
+  end
+
+  def authenticate_user
+  unless current_user
+      flash[:danger] = "Please log in."
+      redirect_to new_session_path
+    end
   end
 
 end

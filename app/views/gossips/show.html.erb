@@ -44,13 +44,18 @@
         <div class="text-muted">
           <small>Publié le <%= @gossip.created_at.strftime("%d/%m/%Y à %H:%M") %></small>
         </div>
-        <%= link_to "Modifier ce potin", edit_gossip_path(@gossip), class: "btn btn-light mt-4" %>
+
+        <% if current_user == @gossip.user %>
+          <%= link_to "Modifier ce potin", edit_gossip_path(@gossip), class: "btn btn-light mt-4" %>
+        <% end %>
       </div>
     </div>
 
-    <%= form_with url: gossip_path(@gossip), method: :delete, local: true, data: { confirm: "Es-tu sûr(e) ?" } do %>
-      <%= hidden_field_tag :_method, :delete %>
-      <%= submit_tag "Supprimer ce potin", class: "btn btn-danger mt-4" %>
+    <% if current_user == @gossip.user %>
+      <%= form_with url: gossip_path(@gossip), method: :delete, local: true, data: { confirm: "Es-tu sûr(e) ?" } do %>
+        <%= hidden_field_tag :_method, :delete %>
+        <%= submit_tag "Supprimer ce potin", class: "btn btn-danger mt-4" %>
+      <% end %>
     <% end %>
 </div>
 
@@ -65,7 +70,9 @@
           <hr>
           <p><strong>Auteur :</strong> <%= comment.user.first_name %></p>
           <p><%= comment.content %></p>
-          <%= link_to "Modifier", edit_comment_path(comment), class: "btn btn-sm btn-light mb-2" %>
+          <% if current_user == @gossip.user %>
+            <%= link_to "Modifier", edit_comment_path(comment), class: "btn btn-sm btn-light mb-2" %>
+          <% end %>
         </div>
       <% end %>
     </div>
