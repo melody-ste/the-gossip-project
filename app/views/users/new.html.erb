@@ -1,0 +1,49 @@
+<h1 class ="text-center m-5 custom-title">Créer un compte</h1>
+
+<div class = "card custom-card-bg text-white m-5 p-5">
+  <%= form_with model: @user, local: true do |f| %>
+    <div>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+
+    <div>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+
+    <div>
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
+
+    <div>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+
+    <div>
+      <%= f.label :age %>
+      <%= f.number_field :age %>
+    </div>
+
+    <div>
+      <%= f.label :city %>
+      <%= f.collection_select :city_id, City.all, :id, :name %>
+    </div>
+
+    <div>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+
+    <div>
+      <%= f.submit "S'inscrire" %>
+    </div>
+  <% end %>
+</div>

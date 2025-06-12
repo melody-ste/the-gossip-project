@@ -9,12 +9,15 @@ Rails.application.routes.draw do
   end
 
   resources :welcome, only: [:show]
-  resources :users, only: [:show]
+  resources :users, only: [:new, :create, :show]
   resources :cities, only: [:show]
   resources :gossips do
     resources :comments, only:[:create] #le com appartient a un gossip spécifique
   end
   resources :comments, only: [:edit, :update, :destroy]
-  resources :sessions, only: [:new, :create, :destroy]
+  resource :session, only: [:new, :create, :destroy]
+
+  get 'signup', to: 'users#new'
+ 
 
 end

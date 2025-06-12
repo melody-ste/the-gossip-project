@@ -1,2 +1,20 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<h1 class ="text-center m-5 custom-title">Connexion</h1>
+
+
+<div class = "card custom-card-bg text-white m-5 p-5">
+  <%= form_with url: session_path, data: { turbo: false }, local: true do %>
+    <div>
+      <%= label_tag :email %>
+      <%= text_field_tag :email %>
+    </div>
+
+    <div>
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
+    </div>
+
+    <div>
+      <%= submit_tag "Se connecter" %>
+    </div>
+  <% end %>
+</div>
