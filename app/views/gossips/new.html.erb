@@ -11,10 +11,6 @@
     <%= label_tag 'gossip_content', 'Content' %>
     <%= text_area_tag 'gossip[content]', nil, class: "form-control", placeholder: "Contenu du potin", rows: 4 %>
     <br /> <br />
-
-    <%= label_tag 'gossip_user_id', 'Choisir un utilisateur' %>
-    <%= select_tag 'gossip[user_id]', options_from_collection_for_select(User.all, :id, :first_name), class: "form-select" %>
-    <br /> <br />
     
     <%= label_tag 'tag_ids', 'Choisir un ou plusieurs tags' %>
     <%= select_tag 'tag_ids[]', options_from_collection_for_select(Tag.all, :id, :title), multiple: true, class: "form-select" %>

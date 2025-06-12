@@ -62,6 +62,7 @@
 
       <% @gossip.comments.each do |comment| %>
         <div class="comment">
+          <hr>
           <p><strong>Auteur :</strong> <%= comment.user.first_name %></p>
           <p><%= comment.content %></p>
           <%= link_to "Modifier", edit_comment_path(comment), class: "btn btn-sm btn-light mb-2" %>
@@ -75,7 +76,7 @@
 <div class="mt-5 mb-5 col-md-8">
   <div class= "row justify-content-center">
     <div class="card custom-card-bg text-white">
-      <h3>Ajouter un commentaire :</h3>
+      <h3 class= "mt-2">Ajouter un commentaire :</h3>
       <%= form_with(model: [@gossip, @comment], local: true) do |form| %>
         <div class="form-group">
           <%= form.label :content, "Commentaire" %>

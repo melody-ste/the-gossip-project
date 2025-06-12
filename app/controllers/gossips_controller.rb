@@ -17,7 +17,7 @@ class GossipsController < ApplicationController
 
   def create
     
-    @gossip = Gossip.new(gossip_params)
+    @gossip = current_user.gossips.build(gossip_params) #build lie directement au user
     
 
     if @gossip.save 

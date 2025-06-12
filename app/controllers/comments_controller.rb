@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   def create
     @gossip = Gossip.find(params[:gossip_id])
     @comment = @gossip.comments.build(comment_params)
-    @comment.user = User.find_by(email: "anonyme@example.com") 
+    @comment.user = current_user
 
     if @comment.save
       redirect_to gossip_path(@gossip), notice: "Commentaire ajouté !"
