@@ -7,16 +7,23 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       log_in(user)
+
+      if params[:remember_me] == "1"
+        remember(user)
+      else
+        forget(user)
+      end
+
       flash[:success] = "Bienvenue #{user.first_name} !"
       redirect_to root_path
     else
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash.now[:danger] = 'Email ou mot de passe invalide'
       render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
-    session.delete(:user_id)
+    log_out
     flash[:success] = "Déconnexion réussie"
     redirect_to root_path
   end

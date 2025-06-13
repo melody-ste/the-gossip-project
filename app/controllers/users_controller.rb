@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
+      remember(@user) if params[:user][:remember_me] == "1"
       redirect_to root_path
     else
       render :new
@@ -29,7 +30,8 @@ class UsersController < ApplicationController
       :age,
       :password,
       :password_confirmation,
-      :city_id
+      :city_id,
+      :remember_me
     )
   end
 
